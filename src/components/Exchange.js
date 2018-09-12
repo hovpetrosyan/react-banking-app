@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getExchangeRate } from "../proxy/bank.proxy";
 import { requestHandler } from "../utils/fetchUtils";
 import { STATUS_OK } from "../constants/ResponseStatuses";
+
 class Exchange extends Component {
   state = {
     rate: null,
@@ -9,6 +10,7 @@ class Exchange extends Component {
     amount: null,
     exchanged: null
   };
+
   handleCurrencySelect = () => {
     const [first, second] = this.state.currencies;
     this.setState(
@@ -20,6 +22,7 @@ class Exchange extends Component {
       }
     );
   };
+
   exchangeRate = val => {
     this.setState({ amount: val }, () => {
       const { currencies, amount } = this.state;
@@ -35,6 +38,7 @@ class Exchange extends Component {
       });
     });
   };
+
   render() {
     const { currencies, amount, exchanged } = this.state;
     return (

@@ -20,9 +20,11 @@ class Transactions extends Component {
       [STATUS_OK]: handleOk
     });
   };
+
   componentDidMount() {
     this.controlDataAndState(1);
   }
+
   render() {
     const { transfers, select } = this.state;
     return (

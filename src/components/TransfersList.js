@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Transfer from "./Transfer";
 import PropTypes from "prop-types";
+
 class TransfersList extends Component {
   static propTypes = {
     label: PropTypes.string,
@@ -9,6 +10,7 @@ class TransfersList extends Component {
     transfers: PropTypes.object,
     selectClass: PropTypes.string
   };
+
   render() {
     const { label, id, control, transfers, selectClass } = this.props;
     return (

@@ -9,7 +9,6 @@
     "lint": "eslint **/*.js",
     "lint-fix": "eslint **/*.js --fix"
   },
-  "author": "Simply Technologies",
   "license": "ISC",
   "dependencies": {
     "babel-plugin-module-resolver": "^3.0.0",

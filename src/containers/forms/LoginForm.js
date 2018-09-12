@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 
 class LoginForm extends Component {
   static propTypes = {
-    handleLogin: PropTypes.func.isRequired
+    handleLogin: PropTypes.func.isRequired,
+    actionUrl: PropTypes.string
   };
 
   state = { username: "", password: "" };

@@ -12,6 +12,7 @@ class Filter extends Component {
   handleChange = e => {
     this.setState({ input: e.target.value });
   };
+
   render() {
     const { input } = this.state.input;
     return (

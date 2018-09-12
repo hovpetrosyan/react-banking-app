@@ -13,11 +13,13 @@ class Transfer extends Component {
     amount: "",
     invalidAmount: ""
   };
+
   handleInputChange = (inputType, val) => {
     this.setState({
       [inputType]: val
     });
   };
+
   handleTransfer = () => {
     let { to, amount } = this.state;
     if (!isNaN(amount) && to) {
@@ -39,6 +41,7 @@ class Transfer extends Component {
       });
     }
   };
+
   render() {
     const { to, amount, transfer, msg, receiverID, invalidAmount } = this.state;
     return (

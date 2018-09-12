@@ -6,11 +6,13 @@ class RegisterForm extends Component {
     handleRegister: PropTypes.func.isRequired,
     history: PropTypes.object
   };
+
   state = {
     username: "",
     password: "",
     email: ""
   };
+
   usernameInputChangedHandler = e => {
     e.preventDefault();
     const username = e.target.value;
@@ -34,6 +36,7 @@ class RegisterForm extends Component {
     const { username, password, email } = this.state;
     this.props.handleRegister(username, password, email);
   };
+
   render() {
     const { username, password, email } = this.state;
     return (

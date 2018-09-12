@@ -5,6 +5,7 @@ class AccountDetails extends Component {
   static propTypes = {
     customer: PropTypes.object
   };
+
   render() {
     const { customer } = this.props;
     return customer ? (
