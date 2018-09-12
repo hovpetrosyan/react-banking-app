@@ -7,30 +7,18 @@ class Filter extends Component {
     filter: PropTypes.string
   };
 
-  state = { input: this.props.filter };
+  state = { input: decodeURIComponent(this.props.filter) };
 
   handleChange = e => {
     this.setState({ input: e.target.value });
   };
-  componentDidMount() {
-    this.divRef.innerText = decodeURIComponent(this.state.input);
-  }
   render() {
+    const { input } = this.state.input;
     return (
       <div>
-        <input
-          type="text"
-          value={this.state.input}
-          onChange={this.handleChange}
-        />
-        <button
-          onClick={() => {
-            this.props.handleChange(this.state.input);
-          }}
-        >
-          Filter
-        </button>
-        <div ref={divRef => (this.divRef = divRef)} />
+        <input type="text" value={input} onChange={this.handleChange} />
+        <button onClick={() => this.props.handleChange(input)}>Filter</button>
+        <div>input</div>
       </div>
     );
   }

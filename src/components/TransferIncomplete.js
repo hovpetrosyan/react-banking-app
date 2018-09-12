@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
 
 class TransferIncomplete extends Component {
+  static propTypes = {
+    msg: PropTypes.string,
+    receiverID: PropTypes.number
+  };
+
   render() {
     const { msg, receiverID } = this.props;
 
@@ -10,7 +14,12 @@ class TransferIncomplete extends Component {
       <React.Fragment>
         <div>
           Dear customer transfer failed
-          <img src="/attention.png" heigth="35px" width="35px" />
+          <img
+            src="/attention.png"
+            heigth="35px"
+            width="35px"
+            alt="attention"
+          />
           <br />
           Here are details:
           <div>
@@ -18,9 +27,7 @@ class TransferIncomplete extends Component {
           </div>
         </div>
       </React.Fragment>
-    ) : (
-      ""
-    );
+    ) : null;
   }
 }
 

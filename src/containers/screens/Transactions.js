@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-
-import TransferInfo from "../../components/TransferInfo";
 import TransfersList from "../../components/TransfersList";
-import TransferIncomplete from "../../components/TransferIncomplete";
 import { getAllTransfers } from "../../proxy/transfers.proxy";
 import { requestHandler } from "../../utils/fetchUtils";
 import { STATUS_OK } from "../../constants/ResponseStatuses";
@@ -35,16 +31,16 @@ class Transactions extends Component {
           <TransfersList
             label="my transfers"
             id="1"
-            control={this.controlDataAndState}
-            transfers={select == 1 ? transfers : []}
-            selectClass={select == 1 ? "selected" : ""}
+            control={() => this.controlDataAndState(1)}
+            transfers={select === 1 ? transfers : []}
+            selectClass={select === 1 ? "selected" : ""}
           />
           <TransfersList
             label="transfers to me"
             id="2"
-            control={this.controlDataAndState}
-            transfers={select == 2 ? transfers : []}
-            selectClass={select == 2 ? "selected" : ""}
+            control={() => this.controlDataAndState(2)}
+            transfers={select === 2 ? transfers : []}
+            selectClass={select === 2 ? "selected" : ""}
           />
         </ul>
       </React.Fragment>

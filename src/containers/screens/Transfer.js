@@ -14,16 +14,9 @@ class Transfer extends Component {
     invalidAmount: ""
   };
   handleInputChange = (inputType, val) => {
-    if (inputType === "to") {
-      this.setState({
-        to: val
-      });
-    }
-    if (inputType === "amount") {
-      this.setState({
-        amount: val
-      });
-    }
+    this.setState({
+      [inputType]: val
+    });
   };
   handleTransfer = () => {
     let { to, amount } = this.state;

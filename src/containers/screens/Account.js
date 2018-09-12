@@ -4,17 +4,10 @@ import AccountDetails from "../../components/AccountDetails";
 import { getUserAccount } from "../../proxy/users.proxy";
 import { requestHandler } from "../../utils/fetchUtils";
 import { STATUS_OK } from "../../constants/ResponseStatuses";
-import Filter from "../Filter";
 
-class Products extends Component {
-  static propTypes = {
-    user: PropTypes.object.isRequired,
-    history: PropTypes.object
-  };
+class Account extends Component {
   state = {
-    products: null,
-    filter: this.props.history.location.search.substring(8),
-    account: null
+    customer: null
   };
 
   componentDidMount() {
@@ -27,15 +20,8 @@ class Products extends Component {
     });
   }
 
-  handleChange = e => {
-    const filter = e;
-    this.props.history.push(`/products/?filter=${filter}`);
-    this.setState({ filter: this.props.history.location.search.substring(8) });
-  };
-
   render() {
-    const { user } = this.props;
-    const { products, filter, customer } = this.state;
+    const { customer } = this.state;
     return (
       <React.Fragment>
         <AccountDetails customer={customer} />
@@ -44,4 +30,4 @@ class Products extends Component {
   }
 }
 
-export default Products;
+export default Account;

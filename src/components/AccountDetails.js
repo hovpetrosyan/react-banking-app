@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class AccountDetails extends Component {
+  static propTypes = {
+    customer: PropTypes.object
+  };
   render() {
     const { customer } = this.props;
     return customer ? (
@@ -14,9 +17,7 @@ class AccountDetails extends Component {
           <div>Balance: {`${customer.balance} $`}</div>
         </div>
       </React.Fragment>
-    ) : (
-      ""
-    );
+    ) : null;
   }
 }
 

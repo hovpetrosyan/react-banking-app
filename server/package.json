@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/app C:\\Users\\Hovo\\Desktop\\ssl\\privateKey.key C:\\Users\\Hovo\\Desktop\\ssl\\certificate.crt",
+    "start": "node bin/app ",
     "lint": "eslint **/*.js",
     "lint-fix": "eslint **/*.js --fix"
   },
