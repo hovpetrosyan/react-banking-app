@@ -31,6 +31,7 @@ const Navbar = ({ children, history }) => {
             <NavItem label="My Account" to="/account" />
             <NavItem label="Transactions" to="/transactions" />
             <NavItem label="Transfer" to="/transfer" />
+            <NavItem label="Settings" to="/settings" />
           </ul>
         </div>
         <form className="form-inline my-2 my-lg-0">
