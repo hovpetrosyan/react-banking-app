@@ -8,7 +8,6 @@ class SettingsInfo extends Component {
 
   render() {
     const editMode = this.props.editMode;
-
     return !editMode ? (
       <React.Fragment>
         <div>

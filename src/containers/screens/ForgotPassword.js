@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import RegisterForm from "../forms/RegisterForm";
+import ForgotPassworForm from "../forms/ForgotPasswordForm";
 import FormMessage from "../../components/FormMessage";
 import { userRegister } from "../../proxy/users.proxy";
 import { requestHandler } from "../../utils/fetchUtils";
@@ -41,9 +41,9 @@ class ForgotPassword extends Component {
     const { errorMessage } = this.state;
     return (
       <div className="jumbotron">
-        <RegisterForm
-          handleRegister={this.handleRegister}
+        <ForgotPassworForm
           history={this.props.history}
+          handleRegister={this.handleRegister}
         />
         <FormMessage message={errorMessage} isError />
       </div>
