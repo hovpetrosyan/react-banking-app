@@ -49,7 +49,7 @@ class RegisterForm extends Component {
             type="text"
             onChange={this.usernameInputChangedHandler}
             value={username}
-            placeholder="Username"
+            placeholder="Name"
           />
           <input
             className="form-control"
