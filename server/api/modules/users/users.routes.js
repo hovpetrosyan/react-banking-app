@@ -27,7 +27,11 @@ export const init = api => {
   );
 
   router.post("/logout", requiresToBeLoggedIn, usersHandlers.userLogout);
-
+  router.post(
+    "/recoverPassword",
+    requiresNotToBeLoggedIn,
+    usersHandlers.recoverPassword
+  );
   router.get("/contacts", requiresToBeLoggedIn, usersHandlers.getAllUsers);
   router.get("/isLoggedIn", usersHandlers.userCheckLoggedIn);
 

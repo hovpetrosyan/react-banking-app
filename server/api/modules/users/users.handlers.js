@@ -116,3 +116,23 @@ export const findUser = (req, res, next) => {
       );
   }
 };
+
+export const recoverPassword = (req, res, next) => {
+  const { username, email } = req.body;
+  return User.find({
+    $or: [
+      {
+        username
+      },
+      { email }
+    ]
+  })
+    .then(user => {
+      if (user) {
+        res
+          .status(200)
+          .json({ msg: `the message has been sent to email: ${user.email}` });
+      } else res.status(200).json({ msg: "Invalid Credentials" });
+    })
+    .catch(error => next(error));
+};

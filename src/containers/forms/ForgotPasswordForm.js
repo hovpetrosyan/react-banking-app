@@ -28,12 +28,6 @@ class ForgotPasswordForm extends Component {
     }
   };
 
-  forgotButtonClickedHandler = e => {
-    e.preventDefault();
-    const { username, email } = this.state;
-    this.props.handleRegister(username, email);
-  };
-
   render() {
     const { username, email } = this.state;
     return (
@@ -58,7 +52,7 @@ class ForgotPasswordForm extends Component {
           />
           <button
             className="btn btn-primary"
-            onClick={this.forgotButtonClickedHandler}
+            onClick={() => this.props.handleForgotPassword(username, email)}
           >
             Get Password
           </button>

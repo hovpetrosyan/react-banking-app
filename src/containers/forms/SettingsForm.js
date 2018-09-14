@@ -8,24 +8,12 @@ class LoginForm extends Component {
     editMode: PropTypes.bool
   };
 
-  state = { firstName: "", lastName: "", profession: "", password: "" };
+  state = { userName: "", lastName: "", profession: "", password: "" };
 
-  firstNameInputChangedHandler = e => {
+  userNameInputChangedHandler = e => {
     e.preventDefault();
     const firstName = e.target.value;
     this.setState({ firstName });
-  };
-
-  secondNameInputChangedHandler = e => {
-    e.preventDefault();
-    const secondName = e.target.value;
-    this.setState({ secondName });
-  };
-
-  professionInputChangedHandler = e => {
-    e.preventDefault();
-    const profession = e.target.value;
-    this.setState({ profession });
   };
 
   passwordInputChangedHandler = e => {
@@ -34,15 +22,8 @@ class LoginForm extends Component {
     this.setState({ password });
   };
 
-  loginButtonClickedHandler = e => {
-    e.preventDefault();
-    const { username, password } = this.state;
-    const { actionUrl } = this.props;
-    this.props.handleLogin(actionUrl, username, password);
-  };
-
   render() {
-    const { firstName, lastName, profession, password } = this.state;
+    const { userName, password } = this.state;
     const { editMode } = this.props;
     return editMode ? (
       <React.Fragment>
@@ -50,29 +31,11 @@ class LoginForm extends Component {
           <span>FirstName:</span>
           <input
             className="form-control"
-            name="firstName"
+            name="userName"
             type="text"
-            onChange={this.firstNameInputChangedHandler}
-            value={firstName}
-            placeholder="FirstName"
-          />
-          <span>LastName</span>
-          <input
-            className="form-control"
-            name="LastName"
-            type="text"
-            onChange={this.secondNameInputChangedHandler}
-            value={lastName}
-            placeholder="lastName"
-          />
-          <span>Profession</span>
-          <input
-            className="form-control"
-            name="Profession"
-            type="text"
-            onChange={this.professionInputChangedHandler}
-            value={profession}
-            placeholder="Profession"
+            onChange={this.userNameInputChangedHandler}
+            value={userName}
+            placeholder="userName"
           />
           <span>Password</span>
           <input

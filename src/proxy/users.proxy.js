@@ -26,6 +26,17 @@ export const userRegister = (username, password, email) =>
     email
   });
 
+export const forgotPassword = (username, email) =>
+  makeRequest(
+    `${USER_PROXY_URI}/recoverPassword`,
+    HttpMethods.POST,
+    EMPTY_OBJECT,
+    {
+      username,
+      email
+    }
+  );
+
 export const getAllContacts = () => makeRequest(`${USER_PROXY_URI}/contacts`);
 
 export const getUserAccount = () => makeRequest(`${USER_PROXY_URI}/account`);

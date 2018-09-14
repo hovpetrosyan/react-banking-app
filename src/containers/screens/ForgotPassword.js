@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ForgotPassworForm from "../forms/ForgotPasswordForm";
 import FormMessage from "../../components/FormMessage";
-import { userRegister } from "../../proxy/users.proxy";
+import { forgotPassword } from "../../proxy/users.proxy";
 import { requestHandler } from "../../utils/fetchUtils";
 import { STATUS_403, STATUS_OK } from "../../constants/ResponseStatuses";
 
@@ -13,8 +13,8 @@ class ForgotPassword extends Component {
 
   state = { errorMessage: "" };
 
-  handleRegister = (username, password, email) => {
-    const registerRequest = userRegister(username, password, email);
+  handleForgotPassword = (username, email) => {
+    const registerRequest = forgotPassword(username, email);
 
     const handleForbidden = data => {
       if (data.msg) {
@@ -27,8 +27,8 @@ class ForgotPassword extends Component {
       }
     };
 
-    const handleOk = () => {
-      this.props.history.push("/home");
+    const handleOk = user => {
+      console.log(user);
     };
 
     requestHandler(registerRequest, {
@@ -43,7 +43,7 @@ class ForgotPassword extends Component {
       <div className="jumbotron">
         <ForgotPassworForm
           history={this.props.history}
-          handleRegister={this.handleRegister}
+          handleForgotPassword={this.handleForgotPassword}
         />
         <FormMessage message={errorMessage} isError />
       </div>

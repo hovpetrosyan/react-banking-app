@@ -10,17 +10,7 @@ class SettingsInfo extends Component {
     const editMode = this.props.editMode;
     return !editMode ? (
       <React.Fragment>
-        <div>
-          <div>
-            FirstName: <span>YOUR NAME</span>
-          </div>
-          <div>
-            SecondName: <span>SECOND NAME</span>
-          </div>
-          <div>
-            PROFESSION: <span>YOUR PROFESSION</span>
-          </div>
-        </div>
+        <div>username: USERNAME</div>
       </React.Fragment>
     ) : null;
   }
