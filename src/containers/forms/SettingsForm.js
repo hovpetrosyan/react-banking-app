@@ -5,46 +5,42 @@ class LoginForm extends Component {
   static propTypes = {
     handleLogin: PropTypes.func.isRequired,
     actionUrl: PropTypes.string,
-    editMode: PropTypes.bool
-  };
-
-  state = { userName: "", lastName: "", profession: "", password: "" };
-
-  userNameInputChangedHandler = e => {
-    e.preventDefault();
-    const firstName = e.target.value;
-    this.setState({ firstName });
-  };
-
-  passwordInputChangedHandler = e => {
-    e.preventDefault();
-    const password = e.target.value;
-    this.setState({ password });
+    editMode: PropTypes.bool,
+    passwordHandler: PropTypes.func,
+    retypePasswordHandler: PropTypes.func,
+    password: PropTypes.string,
+    retypePassword: PropTypes.string
   };
 
   render() {
-    const { userName, password } = this.state;
-    const { editMode } = this.props;
+    const {
+      editMode,
+      passwordHandler,
+      retypePasswordHandler,
+      password,
+      retypePassword
+    } = this.props;
+
     return editMode ? (
       <React.Fragment>
         <form onSubmit={this.loginButtonClickedHandler}>
-          <span>FirstName:</span>
-          <input
-            className="form-control"
-            name="userName"
-            type="text"
-            onChange={this.userNameInputChangedHandler}
-            value={userName}
-            placeholder="userName"
-          />
           <span>Password</span>
           <input
             className="form-control"
             name="password"
             type="password"
-            onChange={this.passwordInputChangedHandler}
+            onChange={passwordHandler}
             value={password}
             placeholder="Password"
+          />
+          <span>Retype New Password</span>
+          <input
+            className="form-control"
+            name="RetypePassword"
+            type="password"
+            onChange={retypePasswordHandler}
+            value={retypePassword}
+            placeholder="Retype New Password"
           />
         </form>
       </React.Fragment>

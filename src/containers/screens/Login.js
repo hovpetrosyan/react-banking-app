@@ -11,12 +11,10 @@ class Login extends Component {
     history: PropTypes.object.isRequired
   };
 
-  actionUrl = "/api/users/login";
-
   state = { errorMessage: "" };
 
-  handleLogin = (actionUrl, username, password) => {
-    const loginRequest = userLogin(actionUrl, username, password);
+  handleLogin = (username, password) => {
+    const loginRequest = userLogin(username, password);
 
     const handleForbidden = data => {
       if (data.msg) {
@@ -43,7 +41,7 @@ class Login extends Component {
     const { errorMessage } = this.state;
     return (
       <div className="jumbotron">
-        <LoginForm handleLogin={this.handleLogin} actionUrl={this.actionUrl} />
+        <LoginForm handleLogin={this.handleLogin} />
         <FormMessage message={errorMessage} isError />
       </div>
     );

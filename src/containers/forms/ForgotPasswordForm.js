@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 class ForgotPasswordForm extends Component {
   static propTypes = {
     handleRegister: PropTypes.func.isRequired,
-    history: PropTypes.object
+    history: PropTypes.object,
+    handleForgotPassword: PropTypes.func
   };
 
   state = {
@@ -52,7 +53,7 @@ class ForgotPasswordForm extends Component {
           />
           <button
             className="btn btn-primary"
-            onClick={() => this.props.handleForgotPassword(username, email)}
+            onClick={e => this.props.handleForgotPassword(e, username, email)}
           >
             Get Password
           </button>

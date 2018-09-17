@@ -44,14 +44,8 @@ export const userLogin = (req, res, next) => {
     // prevent timing attacks
     const passwordHash = user ? user.password : DEFAULT_PASSWORD_HASH;
     const isUserValid = bcrypt.compareSync(password, passwordHash);
-    if (!user) {
-      return res
-        .status(403)
-        .json({ msg: "Invalid username.", credential: username });
-    } else if (!isUserValid) {
-      return res
-        .status(403)
-        .json({ msg: "Invalid password.", credential: password });
+    if (!user || !isUserValid) {
+      return res.status(403).json({ msg: "Invalid credentials" });
     }
     req.login(user._id);
     return res.status(200).json({ user: userToSend(user) });
@@ -120,19 +114,35 @@ export const findUser = (req, res, next) => {
 export const recoverPassword = (req, res, next) => {
   const { username, email } = req.body;
   return User.find({
-    $or: [
-      {
-        username
-      },
-      { email }
-    ]
+    $or: [{ username }, { email }]
   })
     .then(user => {
-      if (user) {
-        res
-          .status(200)
-          .json({ msg: `the message has been sent to email: ${user.email}` });
-      } else res.status(200).json({ msg: "Invalid Credentials" });
+      res.status(200).json({
+        msg:
+          "An email has been sent to the adress on record. If you do not receive one shortly, please contact the Administator"
+      });
+    })
+    .catch(error => next(error));
+};
+
+export const changePassword = (req, res, next) => {
+  const { userId } = req.session;
+  const { password } = req.body;
+  const salt = bcrypt.genSaltSync(10);
+  const passwordHash = bcrypt.hashSync(password, salt);
+  return User.findOneAndUpdate(
+    {
+      _id: userId
+    },
+    { $set: { password: passwordHash } },
+    {
+      new: true
+    }
+  )
+    .then(user => {
+      res.status(200).json({
+        msg: user
+      });
     })
     .catch(error => next(error));
 };

@@ -11,8 +11,17 @@ class Transfer extends Component {
   state = {
     to: "",
     amount: "",
-    invalidAmount: ""
+    invalidAmount: "",
+    msg: "",
+    receiverID: null
   };
+
+  componentDidMount() {
+    const currentLanguage = decodeURIComponent(
+      this.props.history.location.search
+    );
+    console.log(currentLanguage);
+  }
 
   handleInputChange = (inputType, val) => {
     this.setState({
@@ -35,6 +44,7 @@ class Transfer extends Component {
         to: "",
         amount: ""
       });
+      this.props.history.push(`?to=${to}&&amount=${amount}`);
     } else {
       this.setState({
         invalidAmount: "Required number in amount field"

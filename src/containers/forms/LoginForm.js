@@ -24,8 +24,7 @@ class LoginForm extends Component {
   loginButtonClickedHandler = e => {
     e.preventDefault();
     const { username, password } = this.state;
-    const { actionUrl } = this.props;
-    this.props.handleLogin(actionUrl, username, password);
+    this.props.handleLogin(username, password);
   };
 
   render() {

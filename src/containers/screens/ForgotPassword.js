@@ -13,7 +13,8 @@ class ForgotPassword extends Component {
 
   state = { errorMessage: "" };
 
-  handleForgotPassword = (username, email) => {
+  handleForgotPassword = (e, username, email) => {
+    e.preventDefault();
     const registerRequest = forgotPassword(username, email);
 
     const handleForbidden = data => {

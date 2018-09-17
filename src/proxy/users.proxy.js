@@ -7,8 +7,8 @@ import HttpMethods from "../constants/HttpMethods";
 const EMPTY_OBJECT = {};
 const USER_PROXY_URI = "/api/users";
 
-export const userLogin = (actionURL, username, password) =>
-  makeRequest(actionURL, HttpMethods.POST, EMPTY_OBJECT, {
+export const userLogin = (username, password) =>
+  makeRequest(`${USER_PROXY_URI}/login`, HttpMethods.POST, EMPTY_OBJECT, {
     username,
     password
   });
@@ -35,6 +35,14 @@ export const forgotPassword = (username, email) =>
       username,
       email
     }
+  );
+
+export const changePassword = password =>
+  makeRequest(
+    `${USER_PROXY_URI}/changePassword`,
+    HttpMethods.POST,
+    EMPTY_OBJECT,
+    { password }
   );
 
 export const getAllContacts = () => makeRequest(`${USER_PROXY_URI}/contacts`);
