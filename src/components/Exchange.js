@@ -1,9 +1,15 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { getExchangeRate } from "../proxy/bank.proxy";
 import { requestHandler } from "../utils/fetchUtils";
 import { STATUS_OK } from "../constants/ResponseStatuses";
 import qs from "query-string";
+
 class Exchange extends Component {
+  static propTypes = {
+    history: PropTypes.object
+  };
+
   state = {
     rate: null,
     currencies: ["Euro", "Dollar"],
@@ -48,7 +54,7 @@ class Exchange extends Component {
   };
 
   render() {
-    const { currencies, amount, exchanged } = this.state;
+    const { currencies, exchanged } = this.state;
     return (
       <React.Fragment>
         <input
@@ -56,16 +62,16 @@ class Exchange extends Component {
           placeholder="Type amount of money"
           onChange={this.inputHandler}
         />
-        <select value={currencies[0]} onBlur={this.handleCurrencySelect}>
+        <select value={currencies[0]} onChange={this.handleCurrencySelect}>
           <option value="Euro">Euro</option>
           <option value="Dollar">Dollar</option>
         </select>
         convert to
-        <select value={currencies[1]} onBlur={this.handleCurrencySelect}>
+        <select value={currencies[1]} onChange={this.handleCurrencySelect}>
           <option value="Euro">Euro</option>
           <option value="Dollar">Dollar</option>
         </select>
-        <div className="exchangeResult">
+        <div className="exchange-result">
           {exchanged ? exchanged + currencies[1] : null}
         </div>
         <button onClick={this.exchangeRate}> Exchange Rate </button>

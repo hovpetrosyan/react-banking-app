@@ -4,7 +4,7 @@ import moment from "moment";
 
 class TransferInfo extends Component {
   static propTypes = {
-    transfer: PropTypes.transfer
+    transfer: PropTypes.object
   };
 
   render() {

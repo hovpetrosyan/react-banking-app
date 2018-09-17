@@ -13,19 +13,6 @@ button {
   margin: 10px;
 }
 
-.todoInput {
-  display: inline-block;
-}
-
-.todoCheckbox {
-  margin: 5px 5px 5px 25px;
-  width: auto !important;
-}
-
-.todoCard {
-  margin-top: 20px;
-}
-
 .btn {
   cursor: pointer;
 }
@@ -33,10 +20,6 @@ button {
 .btn-list {
   width: 300px;
   margin-left: 10px;
-}
-
-.backToHomeButton {
-  margin-left: 0px;
 }
 
 /* REACT TOASTR */
@@ -112,14 +95,8 @@ h1 small {
   box-shadow: 0px 3px 0px 0px #008f73;
 }
 
-.activeNavLink {
+.active-nav-link {
   color: black !important;
-}
-
-.productGrid {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
 }
 
 .product {
@@ -127,44 +104,9 @@ h1 small {
   margin-right: 15px;
 }
 
-.productImage {
-  height: 200px;
-  width: 200px;
-}
-
-.addProductContainer {
-  margin-left: 50px;
-  padding-left: 20px;
-}
-
-.formTitle {
-  margin: 10px 0px 0px 0px;
-}
-
-.formInput {
-  width: 60%;
-  margin-left: 0;
-}
-
-.formButton {
-  margin: 10px 0px 0px 0px;
-}
-.contactsList {
-  width: 25%;
-  overflow-y: auto;
-}
-.contactsList ul li {
-  cursor: pointer;
-}
-.contactsList ul li:hover {
-  color: blue;
-}
 .messages {
   width: 50%;
   height: 400px;
-}
-.contactsScreen {
-  display: flex;
 }
 
 .message-box {
@@ -172,26 +114,9 @@ h1 small {
   height: 100%;
   overflow-y: auto;
 }
-.selectedContact {
-  color: red;
-  text-decoration: underline;
-}
-.msgToMe,
-.msgByMe {
-  min-height: 50px;
-  border: 1px solid;
-  border-radius: 20px;
-  position: relative;
-  width: 50%;
-  text-align: center;
-  margin-top: 20px;
-  overflow-wrap: break-word;
-}
-.msgToMe {
-  left: 50%;
-}
-.bankProfile,
-.bankID {
+
+.bank-profile,
+.bank-ID {
   border: 2px solid blue;
   width: 50%;
   text-align: center;
@@ -200,20 +125,24 @@ h1 small {
   border-radius: 20px;
   margin-left: 0 auto;
 }
-.bankID {
+
+.bank-ID {
   height: 100px;
   line-height: 100px;
   color: grey;
   font-size: 25px;
 }
-.invalidAmount {
+
+.invalid-amount {
   color: red;
 }
-.miniNavBar {
+
+.mini-nav-bar {
   display: flex;
   list-style-type: none;
 }
-.miniNavBar li {
+
+.mini-nav-bar li {
   margin-left: 10px;
   width: 150px;
   text-align: center;
@@ -222,28 +151,33 @@ h1 small {
   border-radius: 20px;
   font-size: 17px;
 }
-.miniNavBar li:hover {
+
+.mini-nav-bar li:hover {
   background-color: green;
 }
-.transfersList {
+
+.transfers-list {
   position: absolute;
   top: 10%;
   left: 25%;
   height: 70%;
   overflow-y: auto;
 }
-.transfersList div {
+
+.transfers-list div {
   width: 100%;
   border-bottom: 1px solid black;
   border-top: 1px solid black;
   margin-bottom: 5px;
   background-color: silver;
 }
+
 .selected {
   color: red;
   background-color: blue;
 }
-.exchangeResult {
+
+.exchange-result {
   position: relative;
   left: 50%;
   width: 400px;

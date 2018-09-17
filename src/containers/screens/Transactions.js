@@ -29,17 +29,17 @@ class Transactions extends Component {
     const { transfers, select } = this.state;
     return (
       <React.Fragment>
-        <ul className="miniNavBar">
+        <ul className="mini-nav-bar">
           <TransfersList
             label="my transfers"
-            id="1"
+            id={1}
             control={() => this.controlDataAndState(1)}
             transfers={select === 1 ? transfers : []}
             selectClass={select === 1 ? "selected" : ""}
           />
           <TransfersList
             label="transfers to me"
-            id="2"
+            id={2}
             control={() => this.controlDataAndState(2)}
             transfers={select === 2 ? transfers : []}
             selectClass={select === 2 ? "selected" : ""}

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import AccountDetails from "../../components/AccountDetails";
 import { getUserAccount } from "../../proxy/users.proxy";
 import { requestHandler } from "../../utils/fetchUtils";

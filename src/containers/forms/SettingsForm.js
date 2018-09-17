@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 
 class LoginForm extends Component {
   static propTypes = {
-    handleLogin: PropTypes.func.isRequired,
-    actionUrl: PropTypes.string,
     editMode: PropTypes.bool,
     passwordHandler: PropTypes.func,
     retypePasswordHandler: PropTypes.func,

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import NavItem from "./NavItem";
 import { NavLink, withRouter } from "react-router-dom";

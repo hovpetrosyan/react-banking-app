@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Register from "./containers/screens/Register";
 import ForgotPassword from "./containers/screens/ForgotPassword";

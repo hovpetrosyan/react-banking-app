@@ -16,7 +16,6 @@ class Settings extends Component {
   passwordHandler = e => {
     e.preventDefault();
     const password = e.target.value;
-    console.log(password);
     this.setState({ password });
   };
 
@@ -42,9 +41,7 @@ class Settings extends Component {
         }
       };
 
-      const handleOk = user => {
-        console.log(user);
-      };
+      const handleOk = user => {};
 
       requestHandler(registerRequest, {
         [STATUS_403]: handleForbidden,

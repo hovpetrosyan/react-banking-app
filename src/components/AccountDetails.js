@@ -10,8 +10,8 @@ class AccountDetails extends Component {
     const { customer } = this.props;
     return customer ? (
       <React.Fragment>
-        <div className="bankID">Bank ID: {customer._id}</div>
-        <div className="bankProfile">
+        <div className="bank-ID">Bank ID: {customer._id}</div>
+        <div className="bank-profile">
           <h2>Account Info</h2>
           <div>Customer: {customer.username}</div>
           <div>Email: {customer.email}</div>

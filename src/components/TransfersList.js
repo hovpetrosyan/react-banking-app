@@ -7,7 +7,7 @@ class TransfersList extends Component {
     label: PropTypes.string,
     id: PropTypes.number,
     control: PropTypes.func,
-    transfers: PropTypes.object,
+    transfers: PropTypes.array,
     selectClass: PropTypes.string
   };
 
@@ -18,7 +18,7 @@ class TransfersList extends Component {
         <li onClick={e => control(id)} className={selectClass}>
           {label}
         </li>
-        <div className="transfersList">
+        <div className="transfers-list">
           {transfers.map((transfer, index) => (
             <Transfer key={index} transfer={transfer} id={id} />
           ))}

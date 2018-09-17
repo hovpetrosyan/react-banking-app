@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
 import TransferInfo from "../../components/TransferInfo";
 import TransferIncomplete from "../../components/TransferIncomplete";
 import { newTransfer } from "../../proxy/transfers.proxy";
 import { requestHandler } from "../../utils/fetchUtils";
 import { STATUS_OK } from "../../constants/ResponseStatuses";
 import qs from "query-string";
+
 class Transfer extends Component {
   static propTypes = {
     history: PropTypes.object
@@ -75,7 +75,7 @@ class Transfer extends Component {
           onChange={e => this.handleInputChange("amount", e.target.value)}
         />
         <button onClick={this.handleTransfer}>Transfer</button>
-        <div className="invalidAmount">{invalidAmount}</div>
+        <div className="invalid-amount">{invalidAmount}</div>
         <TransferInfo transfer={transfer} />
         <TransferIncomplete msg={msg} receiverID={receiverID} />
       </React.Fragment>
