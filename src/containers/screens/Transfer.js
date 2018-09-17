@@ -6,8 +6,12 @@ import TransferIncomplete from "../../components/TransferIncomplete";
 import { newTransfer } from "../../proxy/transfers.proxy";
 import { requestHandler } from "../../utils/fetchUtils";
 import { STATUS_OK } from "../../constants/ResponseStatuses";
-
+import qs from "query-string";
 class Transfer extends Component {
+  static propTypes = {
+    history: PropTypes.object
+  };
+
   state = {
     to: "",
     amount: "",
@@ -17,10 +21,10 @@ class Transfer extends Component {
   };
 
   componentDidMount() {
-    const currentLanguage = decodeURIComponent(
-      this.props.history.location.search
-    );
-    console.log(currentLanguage);
+    const { to, amount } = qs.parse(this.props.history.location.search);
+    if (to && amount) {
+      this.handleTransferLogic(to, amount);
+    }
   }
 
   handleInputChange = (inputType, val) => {
@@ -31,12 +35,15 @@ class Transfer extends Component {
 
   handleTransfer = () => {
     let { to, amount } = this.state;
+    this.props.history.push(`?to=${to}&&amount=${amount}`);
+  };
+
+  handleTransferLogic = (to, amount) => {
     if (!isNaN(amount) && to) {
       const transfer = newTransfer(to, amount);
       const handleOk = ({ transfer, msg, receiverID }) => {
         this.setState({ transfer, msg, receiverID, invalidAmount: "" });
       };
-
       requestHandler(transfer, {
         [STATUS_OK]: handleOk
       });
@@ -44,7 +51,6 @@ class Transfer extends Component {
         to: "",
         amount: ""
       });
-      this.props.history.push(`?to=${to}&&amount=${amount}`);
     } else {
       this.setState({
         invalidAmount: "Required number in amount field"

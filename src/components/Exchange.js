@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getExchangeRate } from "../proxy/bank.proxy";
 import { requestHandler } from "../utils/fetchUtils";
 import { STATUS_OK } from "../constants/ResponseStatuses";
-
+import qs from "query-string";
 class Exchange extends Component {
   state = {
     rate: null,
@@ -10,6 +10,21 @@ class Exchange extends Component {
     amount: null,
     exchanged: null
   };
+
+  componentDidMount() {
+    const { amount } = qs.parse(this.props.history.location.search);
+    const { currencies } = this.state;
+    const getRate = getExchangeRate();
+    const handleOk = ({ rate }) => {
+      if (currencies[0] === "Dollar")
+        this.setState({ rate, exchanged: amount * rate });
+      else this.setState({ rate, exchanged: amount / rate });
+    };
+
+    requestHandler(getRate, {
+      [STATUS_OK]: handleOk
+    });
+  }
 
   handleCurrencySelect = () => {
     const [first, second] = this.state.currencies;
@@ -24,19 +39,12 @@ class Exchange extends Component {
   };
 
   exchangeRate = val => {
-    this.setState({ amount: val }, () => {
-      const { currencies, amount } = this.state;
-      const getRate = getExchangeRate();
-      const handleOk = ({ rate }) => {
-        if (currencies[0] === "Dollar")
-          this.setState({ rate, exchanged: amount * rate });
-        else this.setState({ rate, exchanged: amount / rate });
-      };
+    let { amount } = this.state;
+    this.props.history.push(`?amount=${amount}`);
+  };
 
-      requestHandler(getRate, {
-        [STATUS_OK]: handleOk
-      });
-    });
+  inputHandler = e => {
+    this.setState({ amount: e.target.value });
   };
 
   render() {
@@ -46,7 +54,7 @@ class Exchange extends Component {
         <input
           type="text"
           placeholder="Type amount of money"
-          onChange={e => this.exchangeRate(e.target.value)}
+          onChange={this.inputHandler}
         />
         <select value={currencies[0]} onBlur={this.handleCurrencySelect}>
           <option value="Euro">Euro</option>
@@ -58,9 +66,9 @@ class Exchange extends Component {
           <option value="Dollar">Dollar</option>
         </select>
         <div className="exchangeResult">
-          {amount} {amount ? currencies[0] : null}
           {exchanged ? exchanged + currencies[1] : null}
         </div>
+        <button onClick={this.exchangeRate}> Exchange Rate </button>
       </React.Fragment>
     );
   }

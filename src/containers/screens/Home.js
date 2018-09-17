@@ -5,7 +5,7 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        Exchange <Exchange />
+        Exchange <Exchange history={this.props.history} />
       </React.Fragment>
     );
   }
